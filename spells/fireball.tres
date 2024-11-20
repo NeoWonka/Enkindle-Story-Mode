@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Spell_Cost" load_steps=2 format=3 uid="uid://b0auhq0uvo6lg"]
+
+[ext_resource type="Script" path="res://spells/spell_cost.gd" id="1_1j7ej"]
+
+[resource]
+script = ExtResource("1_1j7ej")
+cost = "331"
+readable_name = "Fireball"
+cursor_state = 1

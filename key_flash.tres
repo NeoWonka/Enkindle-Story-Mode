@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://kxgcfjp076yn"]
+
+[ext_resource type="Shader" path="res://key_flash.gdshader" id="1_r2a14"]
+
+[resource]
+shader = ExtResource("1_r2a14")
+shader_parameter/enable = false

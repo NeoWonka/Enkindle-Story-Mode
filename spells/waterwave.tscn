@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://n3roryko2sh1"]
+
+[ext_resource type="Script" path="res://spells/waterwave.gd" id="1_0fx7m"]
+[ext_resource type="Resource" uid="uid://cewm6wj4ggl33" path="res://spells/waterwave.tres" id="2_kwijx"]
+[ext_resource type="Texture2D" uid="uid://d085gt2ouf1of" path="res://assets/waterwave.png" id="3_u1ada"]
+[ext_resource type="AudioStream" uid="uid://becv75ctn0smr" path="res://assets/Waterspells.wav" id="4_1ei4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5biy"]
+size = Vector2(30, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4oli8"]
+
+[node name="waterwave" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_0fx7m")
+cost = ExtResource("2_kwijx")
+
+[node name="environmental_collision_box" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_i5biy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 4.71239
+texture = ExtResource("3_u1ada")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(11, 0)
+shape = SubResource("CapsuleShape2D_4oli8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1ei4g")
+volume_db = -31.535
+autoplay = true
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,63 @@
+Look Good Stream
+
+- Pixel font
+  - Screen crawl [DONE]
+  - Ability Names [DOING]
+- Player spell ui
+- Particles
+- Light and Shadow
+  - kinda
+- enemy HP bars [DONE]
+
+- PILLARS
+- Put in audio hooks
+- Writing down attribution
+- Dead enemy shadow residue / corpse and wisps
+  - dissolve effect [DONE]
+  - corpse [SKIP]
+  - wisps [DOING]
+- flooring [DOING]
+
+- Spells
+  - Spell Cost architecture
+- Spell Upgrade and Camp UI
+- Recticle / Fist change
+
+- Level Design
+- Walls
+
+- Tutorial
+- Textboxes
+  - Supergiant style hovering
+
+- Review code
+
+
+#### ATTRIBUTION
+
+Kenny assets
+- Pixel RPG
+- Pixel PIRATE
+- keyboard / key input asset
+
+allnew.itch.io/flask-icons-32x32px
+bdragon1727.itch.io/free-effect-and-bullet-16x16
+https://somepx.itch.io/free-font-yolk
+https://nimblebeastscollective.itch.io/magosfonts
+
+- Dungeon Level Design
+- Programming the rest of the spells
+
+- Camp scene
+  - Reslan?
+- Tutorial
+- Main Menu
+
+
+
+
+
+
+
+
+

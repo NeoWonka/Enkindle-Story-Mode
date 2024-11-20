@@ -1,0 +1,380 @@
+[gd_scene load_steps=19 format=3 uid="uid://cabod6cllbi2u"]
+
+[ext_resource type="Script" path="res://golem.gd" id="1_duijy"]
+[ext_resource type="Shader" path="res://flash.gdshader" id="2_ahm67"]
+[ext_resource type="Texture2D" uid="uid://xjpleb8vfn68" path="res://assets/death_shadow.png" id="4_uqt7y"]
+[ext_resource type="PackedScene" uid="uid://r5ussjeb5c2i" path="res://hp_sprites.tscn" id="5_sy0aw"]
+[ext_resource type="Texture2D" uid="uid://hk0ug0qjjc7e" path="res://assets/bubble.png" id="6_0xb8l"]
+[ext_resource type="PackedScene" uid="uid://cmnqkjc5omnin" path="res://wisp.tscn" id="6_2ywp8"]
+[ext_resource type="Texture2D" uid="uid://bvie84wfsa6h6" path="res://assets/bubble_earth.png" id="6_jf4qe"]
+[ext_resource type="Texture2D" uid="uid://bi6qsp6f24301" path="res://assets/bubble_air.png" id="7_2mjal"]
+[ext_resource type="Texture2D" uid="uid://cierj4cjojtv7" path="res://assets/bubble_fire.png" id="9_jposv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76cot"]
+radius = 16.0
+height = 54.0
+
+[sub_resource type="Animation" id="Animation_0qu8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/bubble_earth:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/bubble_earth:material:shader_parameter/sensitivity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprites/bubble_earth:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("environmental_collision_box:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hurtbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hurtbox:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hitbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e3qje"]
+resource_name = "death"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/bubble_earth:material:shader_parameter/sensitivity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprites/bubble_earth:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("environmental_collision_box:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hurtbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hitbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprites/bubble_earth:material:shader_parameter/enable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:ACTIVE")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("hurtbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("hitbox:monitorable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gelho"]
+resource_name = "windup"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprites/bubble_earth:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8gnq"]
+_data = {
+"RESET": SubResource("Animation_0qu8x"),
+"death": SubResource("Animation_e3qje"),
+"windup": SubResource("Animation_gelho")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6c51"]
+size = Vector2(34, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4hi3"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lv7lx"]
+radius = 29.0172
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcadh"]
+resource_local_to_scene = true
+shader = ExtResource("2_ahm67")
+shader_parameter/enable = false
+shader_parameter/sensitivity = 0.0
+
+[node name="golem" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_duijy")
+GOLEM_TYPE = 3
+DASH_LENGTH = 140
+
+[node name="shadow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 20)
+texture = ExtResource("4_uqt7y")
+
+[node name="environmental_collision_box" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_76cot")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i8gnq")
+}
+
+[node name="hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_e6c51")
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_n4hi3")
+
+[node name="detectbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 96
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectbox"]
+shape = SubResource("CircleShape2D_lv7lx")
+
+[node name="hp_sprites" parent="." instance=ExtResource("5_sy0aw")]
+
+[node name="step" type="AudioStreamPlayer" parent="."]
+
+[node name="punch" type="AudioStreamPlayer" parent="."]
+
+[node name="death_disappear" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="feet" type="Marker2D" parent="."]
+position = Vector2(0, 22)
+
+[node name="drop_water" parent="." instance=ExtResource("6_2ywp8")]
+position = Vector2(-10, 0)
+TYPE = 3
+
+[node name="drop_water2" parent="." instance=ExtResource("6_2ywp8")]
+position = Vector2(10, 0)
+TYPE = 3
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="bubble_earth" type="Sprite2D" parent="sprites"]
+visible = false
+material = SubResource("ShaderMaterial_tcadh")
+texture = ExtResource("6_jf4qe")
+
+[node name="bubble_air" type="Sprite2D" parent="sprites"]
+visible = false
+material = SubResource("ShaderMaterial_tcadh")
+texture = ExtResource("7_2mjal")
+
+[node name="bubble_water" type="Sprite2D" parent="sprites"]
+material = SubResource("ShaderMaterial_tcadh")
+texture = ExtResource("6_0xb8l")
+
+[node name="bubble_fire" type="Sprite2D" parent="sprites"]
+visible = false
+material = SubResource("ShaderMaterial_tcadh")
+texture = ExtResource("9_jposv")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="send_damage"]
+[connection signal="screen_exited" from="death_disappear" to="." method="_on_death_disappear_screen_exited"]

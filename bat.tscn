@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c18ukmox6giqy"]
+
+[node name="bat" type="CharacterBody2D"]

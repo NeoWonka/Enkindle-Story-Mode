@@ -1,0 +1,163 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccihbo5eg465n"]
+
+[ext_resource type="PackedScene" uid="uid://cnjuvmxufse4c" path="res://util_scenes/invisible_in_game.tscn" id="1_7ru12"]
+[ext_resource type="Script" path="res://level.gd" id="1_w438v"]
+[ext_resource type="PackedScene" uid="uid://c0jdqg1xenskv" path="res://util_scenes/areaswitch.tscn" id="2_ompg5"]
+[ext_resource type="Script" path="res://spawner.gd" id="3_b8u5g"]
+[ext_resource type="PackedScene" uid="uid://cabod6cllbi2u" path="res://golem.tscn" id="4_6gd1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbe7n"]
+size = Vector2(213, 306)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_w438v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 743.0
+offset_right = 2072.0
+offset_bottom = 951.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 2064.0
+offset_top = 84.0
+offset_right = 3806.0
+offset_bottom = 1686.0
+color = Color(0.39, 0.39, 0.39, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 2737.0
+offset_top = 1685.0
+offset_right = 2777.0
+offset_bottom = 1725.0
+scale = Vector2(8.75145, 9.13196)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 1964.0
+offset_top = 2037.0
+offset_right = 2262.0
+offset_bottom = 2198.0
+scale = Vector2(8.75145, 9.13196)
+color = Color(0.388235, 0.388235, 0.388235, 1)
+
+[node name="switch0" type="Polygon2D" parent="."]
+position = Vector2(1160, 632)
+polygon = PackedVector2Array(0, 0)
+
+[node name="invisible_in_game" parent="switch0" instance=ExtResource("1_7ru12")]
+
+[node name="switch1" type="Polygon2D" parent="."]
+position = Vector2(2912, 405)
+color = Color(1, 0.164706, 0.611765, 1)
+polygon = PackedVector2Array(0, 0, 0, 945)
+
+[node name="invisible_in_game" parent="switch1" instance=ExtResource("1_7ru12")]
+
+[node name="switch2" type="Polygon2D" parent="."]
+position = Vector2(2948, 2345)
+color = Color(1, 0.164706, 0.611765, 1)
+polygon = PackedVector2Array(0, 0, 578, 0, 578, 605, 0, 605)
+
+[node name="invisible_in_game" parent="switch2" instance=ExtResource("1_7ru12")]
+
+[node name="areaswitch" parent="." instance=ExtResource("2_ompg5")]
+offset_left = 1967.0
+offset_top = 728.0
+offset_right = 2065.0
+offset_bottom = 974.0
+
+[node name="areaswitch2" parent="." instance=ExtResource("2_ompg5")]
+offset_left = 2726.0
+offset_top = 1682.0
+offset_right = 3097.0
+offset_bottom = 1838.0
+
+[node name="spawner" type="Node2D" parent="."]
+position = Vector2(3638, 280)
+script = ExtResource("3_b8u5g")
+
+[node name="ColorRect" type="ColorRect" parent="spawner"]
+offset_left = -107.0
+offset_top = -147.0
+offset_right = 107.0
+offset_bottom = 159.0
+color = Color(1, 0.490196, 0.490196, 1)
+
+[node name="Area2D" type="Area2D" parent="spawner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawner/Area2D"]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_mbe7n")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="spawner2" type="Node2D" parent="."]
+position = Vector2(3638, 1438)
+script = ExtResource("3_b8u5g")
+which_wheel = "EarthWheel"
+
+[node name="ColorRect" type="ColorRect" parent="spawner2"]
+offset_left = -107.0
+offset_top = -147.0
+offset_right = 107.0
+offset_bottom = 159.0
+color = Color(0.611765, 0.729412, 0.388235, 1)
+
+[node name="Area2D" type="Area2D" parent="spawner2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawner2/Area2D"]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_mbe7n")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3135.0
+offset_top = 684.0
+offset_right = 3280.0
+offset_bottom = 759.0
+scale = Vector2(4.45661, 4.07222)
+text = "Move onto these
+to gain an element
+of that color."
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 2116.0
+offset_top = 1400.0
+offset_right = 2435.0
+offset_bottom = 1475.0
+scale = Vector2(3.6605, 3.18349)
+text = "Type the keys below to activate that spell
+To use the fireball, right click to cast
+the projectile in that direction."
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 254.0
+offset_top = 301.0
+offset_right = 597.0
+offset_bottom = 350.0
+scale = Vector2(3.2767, 3.19002)
+text = "WASD to move.
+Space to dash in the direction you're moving"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 1774.0
+offset_top = 970.0
+offset_right = 1854.0
+offset_bottom = 993.0
+scale = Vector2(3.2767, 3.19002)
+text = "Go here ->"
+
+[node name="golem" parent="." instance=ExtResource("4_6gd1g")]
+position = Vector2(4111, 2720)
+action_state = 1
+GOLEM_TYPE = null
+DASH_LENGTH = 500
+DASH_COOLDOWN_SECONDS = 1.0
+
+[node name="golem2" parent="." instance=ExtResource("4_6gd1g")]
+position = Vector2(2954, 3193)
+action_state = 1
+GOLEM_TYPE = null
+
+[connection signal="body_entered" from="spawner/Area2D" to="spawner" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="spawner2/Area2D" to="spawner2" method="_on_area_2d_body_entered"]

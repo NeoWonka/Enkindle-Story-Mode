@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvo64t00m7ruu"]
+
+[ext_resource type="Script" path="res://spells/earthshock.gd" id="1_e7l25"]
+[ext_resource type="Resource" uid="uid://bfii021kp40lx" path="res://spells/earthshock.tres" id="2_1wi7g"]
+[ext_resource type="Shader" path="res://spells/earthshock.gdshader" id="2_rufkp"]
+[ext_resource type="Texture2D" uid="uid://bhsybsvawekbr" path="res://assets/earthshock.png" id="4_hc4ha"]
+[ext_resource type="AudioStream" uid="uid://bnabvjluwb7wv" path="res://assets/earthbreak.wav" id="5_70v4j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7ufb"]
+shader = ExtResource("2_rufkp")
+shader_parameter/enable = true
+
+[sub_resource type="Animation" id="Animation_428u8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/enable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6mwxw"]
+resource_name = "rumble"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"damage_all"
+}, {
+"args": [],
+"method": &"damage_all"
+}, {
+"args": [],
+"method": &"damage_all"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/enable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08tpq"]
+_data = {
+"RESET": SubResource("Animation_428u8"),
+"rumble": SubResource("Animation_6mwxw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpl5"]
+size = Vector2(129, 129)
+
+[node name="earthshock" type="CharacterBody2D"]
+script = ExtResource("1_e7l25")
+cost = ExtResource("2_1wi7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_n7ufb")
+texture = ExtResource("4_hc4ha")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08tpq")
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_fqpl5")
+disabled = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_fqpl5")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_70v4j")
+volume_db = -13.419
+autoplay = true

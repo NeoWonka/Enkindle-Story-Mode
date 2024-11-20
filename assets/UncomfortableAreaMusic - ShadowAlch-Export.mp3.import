@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df7ptomafqwc5"
+path="res://.godot/imported/UncomfortableAreaMusic - ShadowAlch-Export.mp3-b48e7b1feb3fbf0db253233013dffba8.mp3str"
+
+[deps]
+
+source_file="res://assets/UncomfortableAreaMusic - ShadowAlch-Export.mp3"
+dest_files=["res://.godot/imported/UncomfortableAreaMusic - ShadowAlch-Export.mp3-b48e7b1feb3fbf0db253233013dffba8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

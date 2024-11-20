@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnjuvmxufse4c"]
+
+[ext_resource type="Script" path="res://invisible_in_game.gd" id="1_4843c"]
+
+[node name="invisible_in_game" type="Node"]
+script = ExtResource("1_4843c")

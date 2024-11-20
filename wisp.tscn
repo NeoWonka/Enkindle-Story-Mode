@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmnqkjc5omnin"]
+
+[ext_resource type="Script" path="res://wisp.gd" id="1_ri4k8"]
+[ext_resource type="Texture2D" uid="uid://diarj8u503pq3" path="res://assets/earth_orb.png" id="2_vk7vf"]
+[ext_resource type="Texture2D" uid="uid://b17x56sqqma5r" path="res://assets/fire_orb.png" id="3_h62b8"]
+[ext_resource type="Texture2D" uid="uid://bnmiu63lmct0h" path="res://assets/water_orb.png" id="4_2qag7"]
+[ext_resource type="Texture2D" uid="uid://dwhs5x3qogsq3" path="res://assets/air_orb.png" id="5_1wa52"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6b4k"]
+radius = 63.0079
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_unv11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8b77"]
+radius = 4.12311
+
+[node name="wisp" type="CharacterBody2D"]
+script = ExtResource("1_ri4k8")
+SPEED = 150
+
+[node name="EarthOrb" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_vk7vf")
+
+[node name="FireOrb" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_h62b8")
+
+[node name="WaterOrb" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_2qag7")
+
+[node name="AirOrb" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_1wa52")
+
+[node name="range" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
+shape = SubResource("CircleShape2D_m6b4k")
+
+[node name="collect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collect"]
+shape = SubResource("CircleShape2D_unv11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u8b77")
+disabled = true
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
+[connection signal="body_entered" from="collect" to="." method="_on_collect_body_entered"]

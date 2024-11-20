@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://d11pe2ffch0i3"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_6ayg4"]
+[ext_resource type="FontFile" uid="uid://mfvqnhy5lyyl" path="res://assets/fonts/Yolk 6.ttf" id="1_xt3od"]
+[ext_resource type="FontFile" uid="uid://dpp5bxrjahe5b" path="res://assets/fonts/mago2.ttf" id="2_0vwr1"]
+[ext_resource type="PackedScene" uid="uid://delc43kx0xll8" path="res://global_text.tscn" id="4_e80im"]
+[ext_resource type="AudioStream" uid="uid://df7ptomafqwc5" path="res://assets/UncomfortableAreaMusic - ShadowAlch-Export.mp3" id="5_exra2"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ayg4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 20.0
+offset_right = 389.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("1_xt3od")
+theme_override_font_sizes/font_size = 80
+text = "ENKINDLE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 136.0
+offset_right = 278.0
+offset_bottom = 195.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_0vwr1")
+theme_override_font_sizes/font_size = 64
+text = "Play"
+
+[node name="global_text" parent="." instance=ExtResource("4_e80im")]
+
+[node name="skip" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 396.0
+offset_top = 247.0
+offset_right = 471.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("1_xt3od")
+theme_override_font_sizes/font_size = 16
+text = "Press E to skip"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_exra2")
+volume_db = -22.727
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

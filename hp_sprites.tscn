@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=3 uid="uid://r5ussjeb5c2i"]
+
+[ext_resource type="Texture2D" uid="uid://dbl2b3iyo8rrm" path="res://assets/health_half.png" id="1_ejn73"]
+[ext_resource type="Texture2D" uid="uid://w8hl3ydskdoa" path="res://assets/health_full.png" id="2_flui5"]
+
+[node name="hp_sprites" type="Node2D"]
+
+[node name="health1" type="Node2D" parent="."]
+visible = false
+
+[node name="0_5" type="Sprite2D" parent="health1"]
+position = Vector2(0, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="1" type="Sprite2D" parent="health1"]
+position = Vector2(0, 32)
+texture = ExtResource("2_flui5")
+
+[node name="health2" type="Node2D" parent="."]
+visible = false
+
+[node name="0_5" type="Sprite2D" parent="health2"]
+position = Vector2(-6, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="1" type="Sprite2D" parent="health2"]
+position = Vector2(-6, 32)
+texture = ExtResource("2_flui5")
+
+[node name="1_5" type="Sprite2D" parent="health2"]
+position = Vector2(7, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="2" type="Sprite2D" parent="health2"]
+position = Vector2(7, 32)
+texture = ExtResource("2_flui5")
+
+[node name="health3" type="Node2D" parent="."]
+visible = false
+
+[node name="0_5" type="Sprite2D" parent="health3"]
+position = Vector2(-10, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="1" type="Sprite2D" parent="health3"]
+position = Vector2(-10, 32)
+texture = ExtResource("2_flui5")
+
+[node name="1_5" type="Sprite2D" parent="health3"]
+position = Vector2(1, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="2" type="Sprite2D" parent="health3"]
+position = Vector2(1, 32)
+texture = ExtResource("2_flui5")
+
+[node name="2_5" type="Sprite2D" parent="health3"]
+position = Vector2(12, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="3" type="Sprite2D" parent="health3"]
+position = Vector2(12, 32)
+texture = ExtResource("2_flui5")
+
+[node name="health4" type="Node2D" parent="."]
+visible = false
+
+[node name="0_5" type="Sprite2D" parent="health4"]
+position = Vector2(-14, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="1" type="Sprite2D" parent="health4"]
+position = Vector2(-14, 32)
+texture = ExtResource("2_flui5")
+
+[node name="1_5" type="Sprite2D" parent="health4"]
+position = Vector2(-4, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="2" type="Sprite2D" parent="health4"]
+position = Vector2(-4, 32)
+texture = ExtResource("2_flui5")
+
+[node name="2_5" type="Sprite2D" parent="health4"]
+position = Vector2(6, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="3" type="Sprite2D" parent="health4"]
+position = Vector2(6, 32)
+texture = ExtResource("2_flui5")
+
+[node name="3_5" type="Sprite2D" parent="health4"]
+position = Vector2(16, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="4" type="Sprite2D" parent="health4"]
+position = Vector2(16, 32)
+texture = ExtResource("2_flui5")
+
+[node name="health5" type="Node2D" parent="."]
+visible = false
+
+[node name="0_5" type="Sprite2D" parent="health5"]
+position = Vector2(-20, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="1" type="Sprite2D" parent="health5"]
+position = Vector2(-20, 32)
+texture = ExtResource("2_flui5")
+
+[node name="1_5" type="Sprite2D" parent="health5"]
+position = Vector2(-10, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="2" type="Sprite2D" parent="health5"]
+position = Vector2(-10, 32)
+texture = ExtResource("2_flui5")
+
+[node name="2_5" type="Sprite2D" parent="health5"]
+position = Vector2(0, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="3" type="Sprite2D" parent="health5"]
+position = Vector2(0, 32)
+texture = ExtResource("2_flui5")
+
+[node name="3_5" type="Sprite2D" parent="health5"]
+position = Vector2(10, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="4" type="Sprite2D" parent="health5"]
+position = Vector2(10, 32)
+texture = ExtResource("2_flui5")
+
+[node name="4_5" type="Sprite2D" parent="health5"]
+position = Vector2(20, 32)
+texture = ExtResource("1_ejn73")
+
+[node name="5" type="Sprite2D" parent="health5"]
+position = Vector2(20, 32)
+texture = ExtResource("2_flui5")

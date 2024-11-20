@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://vb6x3esh1hie"]
+
+[node name="undine" type="CharacterBody2D"]

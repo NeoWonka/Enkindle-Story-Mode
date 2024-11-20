@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://uy6pput38sag"]
+
+[ext_resource type="Script" path="res://spells/dancing_wisps.gd" id="1_xx4li"]
+[ext_resource type="Texture2D" uid="uid://bm8smkvxw63u3" path="res://assets/dancing_wisps.png" id="2_r2jy3"]
+[ext_resource type="AudioStream" uid="uid://2r2m1s4dtcsb" path="res://assets/WindSpellSFX.mp3" id="3_5rt3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qanwa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg2u1"]
+radius = 21.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7a4q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mqhcf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj6f5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlu3n"]
+radius = 21.0
+
+[sub_resource type="Animation" id="Animation_plhje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:DAMAGE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ypg8g"]
+resource_name = "damage"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:DAMAGE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sc35m"]
+_data = {
+"RESET": SubResource("Animation_plhje"),
+"damage": SubResource("Animation_ypg8g")
+}
+
+[node name="dancing_wisps" type="CharacterBody2D"]
+script = ExtResource("1_xx4li")
+DISTANCE = 300
+PROJECTILE_SPEED = 70
+OFFSET_ANGLE = 0.4
+INWARD_DISTANCE = 20
+
+[node name="Sprite2D" type="CharacterBody2D" parent="."]
+collision_layer = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+rotation = 4.71239
+texture = ExtResource("2_r2jy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+shape = SubResource("RectangleShape2D_qanwa")
+
+[node name="hitbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/hitbox"]
+shape = SubResource("CircleShape2D_wg2u1")
+
+[node name="Sprite2D2" type="CharacterBody2D" parent="."]
+collision_layer = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
+rotation = 4.71239
+texture = ExtResource("2_r2jy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2"]
+shape = SubResource("RectangleShape2D_e7a4q")
+
+[node name="hitbox" type="Area2D" parent="Sprite2D2"]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/hitbox"]
+shape = SubResource("CircleShape2D_mqhcf")
+
+[node name="Sprite2D3" type="CharacterBody2D" parent="."]
+collision_layer = 0
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D3"]
+rotation = 4.71239
+texture = ExtResource("2_r2jy3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3"]
+shape = SubResource("RectangleShape2D_sj6f5")
+
+[node name="hitbox" type="Area2D" parent="Sprite2D3"]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3/hitbox"]
+shape = SubResource("CircleShape2D_vlu3n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sc35m")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5rt3r")
+volume_db = -29.523
+autoplay = true
+
+[connection signal="area_entered" from="Sprite2D/hitbox" to="." method="_on_hitbox0_area_entered"]
+[connection signal="area_entered" from="Sprite2D2/hitbox" to="." method="_on_hitbox1_area_entered"]
+[connection signal="area_entered" from="Sprite2D3/hitbox" to="." method="_on_hitbox2_area_entered"]

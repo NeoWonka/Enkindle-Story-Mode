@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://6rno7n4h3tmh"]
+
+[ext_resource type="Shader" path="res://pixelscaling.gdshader" id="1_m8hnu"]
+
+[resource]
+shader = ExtResource("1_m8hnu")

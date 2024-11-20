@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0jdqg1xenskv"]
+
+[ext_resource type="Script" path="res://util_scenes/areaswitch.gd" id="1_voemo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ycyu"]
+size = Vector2(40, 40)
+
+[node name="areaswitch" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_voemo")
+
+[node name="cameraswitch" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cameraswitch"]
+visible = false
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_6ycyu")
+
+[connection signal="body_entered" from="cameraswitch" to="." method="_on_cameraswitch_body_entered"]

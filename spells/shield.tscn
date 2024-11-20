@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx4r3772od73j"]
+
+[ext_resource type="Script" path="res://spells/shield.gd" id="1_fjh8c"]
+[ext_resource type="Resource" uid="uid://bj8dbafai0b52" path="res://spells/shield.tres" id="2_iyuhg"]
+[ext_resource type="Texture2D" uid="uid://buevmu14i0m1n" path="res://assets/shield.png" id="3_1bpp1"]
+[ext_resource type="AudioStream" uid="uid://bkemvxv5p8voc" path="res://assets/ShieldSFX-ShadowAlch.mp3" id="4_gj1ql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp6g7"]
+radius = 25.0
+
+[node name="shield" type="CharacterBody2D"]
+script = ExtResource("1_fjh8c")
+cost = ExtResource("2_iyuhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_1bpp1")
+hframes = 2
+frame = 1
+
+[node name="reflect" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reflect"]
+shape = SubResource("CircleShape2D_bp6g7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gj1ql")
+volume_db = -26.425
+autoplay = true
+
+[connection signal="area_entered" from="reflect" to="." method="_on_reflect_area_entered"]
